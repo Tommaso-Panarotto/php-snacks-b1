@@ -253,7 +253,7 @@ foreach ($classi as $key => $classe) {
 */
 
 
-if (isset($_GET["Vote"])) {
+if (isset($_GET["Vote"]) && $_GET["Vote"] !== '') {
     foreach ($classi as $key => $classe) {
         $lessqoutes[$key] = [];
         foreach ($classe as $studente) {
@@ -262,14 +262,9 @@ if (isset($_GET["Vote"])) {
             }
         }
     }
-} elseif (strlen($_GET["Vote"]) === 0) {
-    $lessqoutes = $classi;
 } else {
     $lessqoutes = $classi;
-}
-
-echo var_dump($_GET["Vote"]);
-echo var_dump(strlen($_GET["Vote"]));
+};
 
 ?>
 
