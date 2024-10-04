@@ -253,7 +253,23 @@ $classi = [
 </head>
 
 <body>
-
+    <main>
+        <div class="container">
+            <?php foreach ($classi as $key => $classe) { ?>
+                <h2><?= $key ?></h2>
+                <?php foreach ($classe as $keystudente => $studente) { ?>
+                    <ul>
+                        <li><?= $studente["nome"]; ?></li>
+                        <li><?= $studente["cognome"]; ?></li>
+                        <li><?= $studente["anni"]; ?></li>
+                        <li><?= $studente["voto_medio"]; ?></li>
+                        <li><?= $studente["linguaggio_preferito"]; ?></li>
+                        <li><?= $studente["immagine"]; ?></li>
+                    </ul>
+                <?php } ?>
+            <?php } ?>
+        </div>
+    </main>
 </body>
 
 </html>
