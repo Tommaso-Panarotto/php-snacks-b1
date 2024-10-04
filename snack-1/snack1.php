@@ -4,6 +4,16 @@
     che mail contenga un punto e una chiocciola e che age sia un numero. 
     Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" */
 
+    $FirstName = $_GET["FirstName"];
+    $age = $_GET["Age"];
+    $Email = $_GET["Email"];
+    $result;
+
+    if ((is_numeric($age) >= 0 && is_numeric($age) <= 99) && str_contains($Email, "@")) {
+        $result = "accesso riuscito";
+    } else {
+        $result = "accesso non riuscito";
+    }
     ?>
 
  <!DOCTYPE html>
@@ -12,14 +22,14 @@
  <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>PHP Snack</title>
+     <title>PHP Snack1</title>
      <!--Bootstrap-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
  </head>
 
  <body>
-     <div class="container" action="index.php" method="get">
-         <form class="row g-3 needs-validation" novalidate>
+     <div class="container">
+         <form class="row g-3 needs-validation" action="snack1.php" method="get">
              <div class="col-md-4">
                  <label for="firstName" class="form-label">First name</label>
                  <input type="text" class="form-control" id="firstName" name="FirstName" required>
@@ -40,6 +50,10 @@
                  <button class="btn btn-primary btn-warning" type="reset">Reset</button>
              </div>
          </form>
+
+         <div>
+             <h1><?= $result ?></h1>
+         </div>
 
      </div>
 
