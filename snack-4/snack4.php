@@ -240,6 +240,7 @@ $classi = [
 
 
 
+/*
 $bestqoutes = [];
 foreach ($classi as $key => $classe) {
     $bestqoutes[$key] = [];
@@ -249,7 +250,7 @@ foreach ($classi as $key => $classe) {
         }
     }
 }
-echo var_dump($bestqoutes);
+*/
 
 ?>
 
@@ -269,16 +270,11 @@ echo var_dump($bestqoutes);
 <body>
     <main>
         <div class="container">
-            <?php foreach ($bestqoutes as $key => $classe) { ?>
+            <?php foreach ($classi as $key => $classe) { ?>
                 <h2><?= $key ?></h2>
-                <?php foreach ($classe as $keystudente => $studente) { ?>
+                <?php foreach ($classe as $studente) { ?>
                     <ul>
-                        <li><?= $studente["nome"]; ?></li>
-                        <li><?= $studente["cognome"]; ?></li>
-                        <li><?= $studente["anni"]; ?></li>
-                        <li><?= $studente["voto_medio"]; ?></li>
-                        <li><?= $studente["linguaggio_preferito"]; ?></li>
-                        <li><?= $studente["immagine"]; ?></li>
+                        <?php foreach ($studente as $item => $personal) { ?><li> <?= $item, ": ", $personal ?> </li> <?php } ?>
                     </ul>
                 <?php } ?>
             <?php } ?>
