@@ -238,16 +238,19 @@ $classi = [
     ],
 ];
 
-$bestqoutes;
+
+
+$bestqoutes = [];
 foreach ($classi as $key => $classe) {
-    echo var_dump($key);
-    foreach ($classe as $studentkey => $studente) {
+    $bestqoutes[$key] = [];
+    foreach ($classe as $studente) {
         if ($studente["voto_medio"] >= 6) {
-            $bestqoutes = $studente;
-            echo var_dump($bestqoutes);
+            array_push($bestqoutes[$key], $studente);
         }
     }
 }
+echo var_dump($bestqoutes);
+
 ?>
 
 <!DOCTYPE html>
@@ -266,7 +269,7 @@ foreach ($classi as $key => $classe) {
 <body>
     <main>
         <div class="container">
-            <?php foreach ($classi as $key => $classe) { ?>
+            <?php foreach ($bestqoutes as $key => $classe) { ?>
                 <h2><?= $key ?></h2>
                 <?php foreach ($classe as $keystudente => $studente) { ?>
                     <ul>
