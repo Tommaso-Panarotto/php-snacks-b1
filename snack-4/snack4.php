@@ -252,6 +252,25 @@ foreach ($classi as $key => $classe) {
 }
 */
 
+
+if (isset($_GET["Vote"])) {
+    foreach ($classi as $key => $classe) {
+        $lessqoutes[$key] = [];
+        foreach ($classe as $studente) {
+            if ($studente["voto_medio"] < $_GET["Vote"]) {
+                array_push($lessqoutes[$key], $studente);
+            }
+        }
+    }
+} elseif (strlen($_GET["Vote"]) === 0) {
+    $lessqoutes = $classi;
+} else {
+    $lessqoutes = $classi;
+}
+
+echo var_dump($_GET["Vote"]);
+echo var_dump(strlen($_GET["Vote"]));
+
 ?>
 
 <!DOCTYPE html>
@@ -264,17 +283,28 @@ foreach ($classi as $key => $classe) {
 
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <!--Style-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <main>
         <div class="container">
-            <?php foreach ($classi as $key => $classe) { ?>
+            <div class="vote">
+                <form class="text-center" action="snack4.php" method="GET">
+                    <label for="vote" class="form-label">Voto massimo</label>
+                    <input type="number" class="form-control" id="vote" name="Vote" placeholder="Inserisci il voto massimo da visualizzare" min="0" max="10">
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-warning mt-3">Reset</button>
+                </form>
+            </div>
+            <?php foreach ($lessqoutes as $key => $classe) { ?>
                 <h2><?= $key ?></h2>
                 <?php foreach ($classe as $studente) { ?>
-                    <ul>
-                        <?php foreach ($studente as $item => $personal) { ?><li> <?= $item, ": ", $personal ?> </li> <?php } ?>
+                    <ul class="list-group my-3">
+                        <?php foreach ($studente as $item => $personal) { ?><li class="list-group-item">
+                                <h5><?= $item, ": " ?></h5><?= $personal ?>
+                            </li> <?php } ?>
                     </ul>
                 <?php } ?>
             <?php } ?>
