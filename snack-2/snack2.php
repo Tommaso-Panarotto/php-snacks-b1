@@ -39,11 +39,11 @@ $db = [
 <body>
     <div class="container">
         <div class="grey"><?php foreach ($db["teachers"] as $teacher) { ?>
-                <div><?= $teacher["name"], $teacher["lastname"]; ?></div>
+                <div><?= $teacher["name"], " ", $teacher["lastname"]; ?></div>
             <?php } ?>
         </div>
         <div class="green"><?php foreach ($db["pm"] as $pm) { ?>
-                <div><?= $pm["name"], $pm["lastname"]; ?></div>
+                <div><?= $pm["name"], " ", $pm["lastname"]; ?></div>
             <?php } ?>
         </div>
 
