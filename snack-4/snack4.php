@@ -253,7 +253,7 @@ foreach ($classi as $key => $classe) {
 */
 
 
-if (isset($_GET["Vote"]) && $_GET["Vote"] !== '') {
+if (isset($_GET["Vote"]) && $_GET["Vote"] !== '' && ($_GET["Vote"] >= 0 && $_GET["Vote"] <= 10)) {
     foreach ($classi as $key => $classe) {
         $lessqoutes[$key] = [];
         foreach ($classe as $studente) {
@@ -264,6 +264,19 @@ if (isset($_GET["Vote"]) && $_GET["Vote"] !== '') {
     }
 } else {
     $lessqoutes = $classi;
+};
+
+if (isset($_GET["Language"]) && $_GET["Language"] !== '') {
+    foreach ($lessqoutes as $key => $classe) {
+        $language[$key] = [];
+        foreach ($classe as $studente) {
+            if (strtolower($studente["linguaggio_preferito"]) == strtolower($_GET["Language"])) {
+                array_push($language[$key], $studente);
+            }
+        }
+    }
+} else {
+    $language = $lessqoutes;
 };
 
 ?>
@@ -285,15 +298,19 @@ if (isset($_GET["Vote"]) && $_GET["Vote"] !== '') {
 <body>
     <main>
         <div class="container">
-            <div class="vote">
+            <div class="vote pt-5">
                 <form class="text-center" action="snack4.php" method="GET">
+                    <div class="mb-3">
+                        <label for="language" class="form-label">Programming language</label>
+                        <input type="text" class="form-control" id="language" name="Language" placeholder="Inserisci il vosto linguaggio di programmazione preferito">
+                    </div>
                     <label for="vote" class="form-label">Voto massimo</label>
                     <input type="number" class="form-control" id="vote" name="Vote" placeholder="Inserisci il voto massimo da visualizzare" min="0" max="10">
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     <button type="submit" class="btn btn-primary btn-warning mt-3">Reset</button>
                 </form>
             </div>
-            <?php foreach ($lessqoutes as $key => $classe) { ?>
+            <?php foreach ($language as $key => $classe) { ?>
                 <h2><?= $key ?></h2>
                 <?php foreach ($classe as $studente) { ?>
                     <ul class="list-group my-3">
