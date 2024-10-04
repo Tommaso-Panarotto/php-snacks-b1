@@ -18,25 +18,26 @@
  </head>
 
  <body>
-     <div class="container">
+     <div class="container" action="index.php" method="get">
          <form class="row g-3 needs-validation" novalidate>
              <div class="col-md-4">
                  <label for="firstName" class="form-label">First name</label>
-                 <input type="text" class="form-control" id="firstName" name="FirstName" value="Mark" required>
+                 <input type="text" class="form-control" id="firstName" name="FirstName" required>
                  <div class="valid-feedback">
                      Looks good!
                  </div>
                  <div class="mb-3">
-                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                     <label for="email" class="form-label">Email address</label>
+                     <input type="email" class="form-control" id="email" name="Email" placeholder="name@example.com" required>
                  </div>
                  <div class="mb-3">
-                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                     <label for="age" class="form-label">Age</label>
+                     <input type="number" class="form-control" id="age" name="Age" required>
                  </div>
              </div>
              <div class="col-12">
-                 <button class="btn btn-primary" type="submit">Submit form</button>
+                 <button class="btn btn-primary" type="submit">Submit</button>
+                 <button class="btn btn-primary btn-warning" type="reset">Reset</button>
              </div>
          </form>
 
