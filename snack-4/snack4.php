@@ -237,6 +237,17 @@ $classi = [
         ],
     ],
 ];
+
+$bestqoutes;
+foreach ($classi as $key => $classe) {
+    echo var_dump($key);
+    foreach ($classe as $studentkey => $studente) {
+        if ($studente["voto_medio"] >= 6) {
+            $bestqoutes = $studente;
+            echo var_dump($bestqoutes);
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
